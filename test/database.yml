@@ -1,6 +1,6 @@
 mysql:
-  :adapter: mysql
+  :adapter: mysql2
   :host: localhost
   :username: root
-  :password: root
+  :password:
   :database: dw_test

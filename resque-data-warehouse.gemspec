@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name              = 'resque-data-warehouse'
-  s.version           = '0.1.2'
+  s.version           = '0.2.0'
   s.date              = Time.now.strftime('%Y-%m-%d')
   s.summary           = 'A Resque plugin for using Resque and Redis to store and process transactions between transactional and data warehouse tables.'
   s.homepage          = 'http://github.com/mechaferret/resque-data-warehouse'
@@ -12,9 +12,9 @@ Gem::Specification.new do |s|
   s.files            += Dir.glob('lib/**/*')
   s.files            += Dir.glob('test/**/*')
 
-  s.add_dependency('resque',       '>= 1.9.10')
-  s.add_dependency('rails',       ['>= 3.0.0'])
-  s.add_dependency('json',       [">= 1.4.6", "< 1.6"])
+  s.add_dependency('resque',  '>= 1.23.1')
+  s.add_dependency('mysql2')
+  s.add_dependency('activerecord',   ['>= 3.2.0'])
 
   s.description       = <<desc
   A Resque plugin. Allows you to use Redis to queue up and then Resque to process transactions 

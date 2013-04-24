@@ -5,23 +5,20 @@ module Resque
     	def self.included(base)
         base.extend ClassMethods
       end
-      
+
       module ClassMethods
         def warehoused
-          include InstanceMethods
           after_commit :record_to_fact
           after_destroy :destroy_fact
         end
       end
-      
-      module InstanceMethods
-        def record_to_fact
-          DataWarehouse::Transaction.new.enqueue(self)
-        end
 
-        def destroy_fact
-          DataWarehouse::Transaction.new.enqueue(self, 'delete')
-        end
+      def record_to_fact
+        DataWarehouse::Transaction.new.enqueue(self)
+      end
+
+      def destroy_fact
+        DataWarehouse::Transaction.new.enqueue(self, 'delete')
       end
 
     end

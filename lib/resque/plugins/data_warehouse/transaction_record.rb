@@ -36,10 +36,10 @@ module Resque
         def get_lock
           redis = Resque.redis
           if redis.setnx("#{self.transaction_key}_lock", 1)
-            puts "got lock"
+            # puts "got lock"
             return true
           else
-            puts "no lock"
+            # puts "no lock"
             return false
           end
         end
@@ -47,7 +47,7 @@ module Resque
         def release_lock
           redis = Resque.redis
           redis.del("#{self.transaction_key}_lock")
-          puts "released lock"
+          # puts "released lock"
         end
     
         def execute
