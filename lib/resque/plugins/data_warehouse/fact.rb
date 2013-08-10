@@ -10,7 +10,9 @@ module Resque
           fact.id = values["id"]
           values.delete("id")
           values.delete_if{|key,value| !fact.attribute_names.include?(key)}
-          fact.attributes = values
+          values.each do |k,v|
+            fact[k] = v
+          end
           fact
         end
       end
